@@ -1,0 +1,591 @@
+/* ==========================================================================
+   Carbon Design System — tema White (claro) y Gray 100 (oscuro)
+   Tokens: https://www.carbondesignsystem.com/elements/color/tokens
+   Tipografía: IBM Plex Sans · Rejilla: múltiplos de 8px (spacing tokens)
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Superficies */
+  --cds-background: #ffffff;
+  --cds-layer-01: #f4f4f4;
+  --cds-layer-hover-01: #e8e8e8;
+  --cds-field-01: #f4f4f4;
+
+  /* Bordes */
+  --cds-border-subtle: #e0e0e0;
+  --cds-border-strong: #8d8d8d;
+  --cds-border-inverse: #161616;
+  --cds-border-interactive: #0f62fe;
+
+  /* Texto */
+  --cds-text-primary: #161616;
+  --cds-text-secondary: #525252;
+  --cds-text-on-color: #ffffff;
+  --cds-text-error: #da1e28;
+
+  /* Foco */
+  --cds-focus: #0f62fe;
+
+  /* Botones */
+  --cds-button-primary: #0f62fe;
+  --cds-button-primary-hover: #0353e9;
+  --cds-button-primary-active: #002d9c;
+  --cds-button-secondary: #393939;
+  --cds-button-secondary-hover: #4c4c4c;
+  --cds-button-secondary-active: #6f6f6f;
+  --cds-button-tertiary: #0f62fe;
+  --cds-button-tertiary-hover: #0353e9;
+  --cds-button-tertiary-active: #002d9c;
+  --cds-button-tertiary-hover-text: #ffffff;
+  --cds-button-danger: #da1e28;
+
+  /* Estados */
+  --cds-support-warning: #f1c21b;
+  --cds-notification-warning: #fcf4d6;
+
+  /* UI shell header */
+  --cds-shell-bg: #ffffff;
+  --cds-shell-border: #e0e0e0;
+  --cds-shell-hover: #e8e8e8;
+  --cds-shell-text: #525252;
+  --cds-shell-text-active: #161616;
+  --cds-shell-indicator: #0f62fe;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --cds-background: #161616;
+    --cds-layer-01: #262626;
+    --cds-layer-hover-01: #333333;
+    --cds-field-01: #262626;
+
+    --cds-border-subtle: #393939;
+    --cds-border-strong: #6f6f6f;
+    --cds-border-inverse: #f4f4f4;
+    --cds-border-interactive: #4589ff;
+
+    --cds-text-primary: #f4f4f4;
+    --cds-text-secondary: #c6c6c6;
+    --cds-text-error: #ff8389;
+
+    --cds-focus: #ffffff;
+
+    --cds-button-secondary: #6f6f6f;
+    --cds-button-secondary-hover: #606060;
+    --cds-button-secondary-active: #393939;
+    --cds-button-tertiary: #ffffff;
+    --cds-button-tertiary-hover: #f4f4f4;
+    --cds-button-tertiary-active: #c6c6c6;
+    --cds-button-tertiary-hover-text: #161616;
+
+    --cds-notification-warning: #393939;
+
+    --cds-shell-bg: #161616;
+    --cds-shell-border: #393939;
+    --cds-shell-hover: #2c2c2c;
+    --cds-shell-text: #c6c6c6;
+    --cds-shell-text-active: #f4f4f4;
+    --cds-shell-indicator: #4589ff;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  font-family:
+    "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; /* body-01 */
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.16px;
+  color: var(--cds-text-primary);
+  background: var(--cds-background);
+}
+
+x-clock,
+x-alarm,
+x-stopwatch,
+x-timer {
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   UI shell header + navegación
+   -------------------------------------------------------------------------- */
+
+.shell-header {
+  display: flex;
+  align-items: stretch;
+  height: 3rem;
+  color: var(--cds-shell-text-active);
+  background: var(--cds-shell-bg);
+  border-bottom: 1px solid var(--cds-shell-border);
+}
+
+.shell-name {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.125rem;
+  letter-spacing: 0.1px;
+  color: var(--cds-shell-text-active);
+  text-decoration: none;
+}
+
+.shell-header nav {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.shell-header nav > ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.shell-header nav > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.shell-header nav a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  color: var(--cds-shell-text);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+.shell-header nav a:hover {
+  color: var(--cds-shell-text-active);
+  background: var(--cds-shell-hover);
+}
+
+/* Elemento activo: la sección que coincide con :target (o Clock por defecto) */
+body:not(:has(main > section:target)) nav a[href="#clock"],
+body:has(#clock:target) nav a[href="#clock"],
+body:has(#alarm:target) nav a[href="#alarm"],
+body:has(#stopwatch:target) nav a[href="#stopwatch"],
+body:has(#timer:target) nav a[href="#timer"] {
+  color: var(--cds-shell-text-active);
+  border-bottom-color: var(--cds-shell-indicator);
+}
+
+.shell-header a:focus-visible {
+  outline: 2px solid var(--cds-focus);
+  outline-offset: -2px;
+}
+
+/* --------------------------------------------------------------------------
+   Contenido principal
+   -------------------------------------------------------------------------- */
+
+main {
+  flex: 1;
+}
+
+main > section {
+  display: none;
+  width: 100%;
+  max-width: 99rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+main > section:target,
+main:not(:has(> section:target)) > #clock {
+  display: block;
+}
+
+@media (min-width: 42rem) {
+  main > section {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (min-width: 66rem) {
+  main > section {
+    padding: 4rem 3rem;
+  }
+}
+
+x-alarm,
+x-timer {
+  max-width: 40rem;
+}
+
+/* Pantalla de tiempo — estilo "expressive display" de Carbon */
+time {
+  display: block;
+  margin-bottom: 2rem;
+  font-size: clamp(2.5rem, 11vw, 7.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--cds-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Botones
+   -------------------------------------------------------------------------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  min-width: 12rem;
+  height: 3rem;
+  padding: 0 1rem;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+  letter-spacing: 0.16px;
+  text-align: left;
+  color: var(--cds-text-on-color);
+  background: var(--cds-button-primary);
+  border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+/* Que el clic llegue siempre al <button>: los manejadores usan event.target */
+.btn > * {
+  pointer-events: none;
+}
+
+.btn .material-icons {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.btn:focus-visible {
+  border-color: var(--cds-focus);
+  outline: none;
+  box-shadow:
+    inset 0 0 0 1px var(--cds-focus),
+    inset 0 0 0 2px var(--cds-background);
+}
+
+.btn-primary:hover {
+  background: var(--cds-button-primary-hover);
+}
+.btn-primary:active {
+  background: var(--cds-button-primary-active);
+}
+
+.btn-secondary {
+  background: var(--cds-button-secondary);
+}
+.btn-secondary:hover {
+  background: var(--cds-button-secondary-hover);
+}
+.btn-secondary:active {
+  background: var(--cds-button-secondary-active);
+}
+
+.btn-tertiary {
+  color: var(--cds-button-tertiary);
+  background: transparent;
+  border-color: var(--cds-button-tertiary);
+}
+.btn-tertiary:hover {
+  color: var(--cds-button-tertiary-hover-text);
+  background: var(--cds-button-tertiary-hover);
+}
+.btn-tertiary:active {
+  color: var(--cds-button-tertiary-hover-text);
+  background: var(--cds-button-tertiary-active);
+}
+
+/* Botón de icono, variante ghost */
+.btn.btn-icon {
+  justify-content: center;
+  gap: 0;
+  width: 3rem;
+  min-width: 0;
+  padding: 0;
+  font-family: "Material Icons";
+  font-size: 1.25rem;
+  color: var(--cds-text-primary);
+  background: transparent;
+}
+.btn.btn-icon:hover {
+  background: var(--cds-layer-hover-01);
+}
+.btn.btn-icon:active {
+  background: var(--cds-border-subtle);
+}
+.btn.btn-icon.btn-danger {
+  color: var(--cds-text-error);
+}
+.btn.btn-icon.btn-danger:hover {
+  color: var(--cds-text-on-color);
+  background: var(--cds-button-danger);
+}
+
+/* --------------------------------------------------------------------------
+   Content switcher (Loop / No loop)
+   -------------------------------------------------------------------------- */
+
+.switcher {
+  display: inline-flex;
+  margin-bottom: 2rem;
+  border: 1px solid var(--cds-border-strong);
+}
+
+.switcher button {
+  min-width: 7.5rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  letter-spacing: 0.16px;
+  color: var(--cds-text-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+.switcher button + button {
+  border-left: 1px solid var(--cds-border-strong);
+}
+.switcher button:hover {
+  color: var(--cds-text-primary);
+  background: var(--cds-layer-hover-01);
+}
+.switcher button:focus-visible {
+  outline: 2px solid var(--cds-focus);
+  outline-offset: -2px;
+}
+
+x-timer[loop] .switcher .loop,
+x-timer:not([loop]) .switcher .no-loop {
+  font-weight: 600;
+  color: var(--cds-background);
+  background: var(--cds-border-inverse);
+}
+
+/* --------------------------------------------------------------------------
+   Campos de hora
+   -------------------------------------------------------------------------- */
+
+input[type="time"] {
+  width: 100%;
+  min-width: 10rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  letter-spacing: 0.16px;
+  color: var(--cds-text-primary);
+  background: var(--cds-field-01);
+  border: 0;
+  border-bottom: 1px solid var(--cds-border-strong);
+  border-radius: 0;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+input[type="time"]:focus {
+  outline-color: var(--cds-focus);
+}
+
+.field {
+  display: block;
+  flex: 1 1 10rem;
+}
+.field-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.32px;
+  color: var(--cds-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Timer
+   -------------------------------------------------------------------------- */
+
+x-timer .items {
+  margin-bottom: 2rem;
+}
+
+.timers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Intervalo en curso (lo alterna Timer.js con la clase .current-interval) */
+input.current-interval {
+  border-bottom-color: var(--cds-border-interactive);
+  box-shadow: inset 0 -2px 0 var(--cds-border-interactive);
+}
+
+/* --------------------------------------------------------------------------
+   Alarmas
+   -------------------------------------------------------------------------- */
+
+x-alarm .items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Estado vacío */
+x-alarm .items:empty::before {
+  content: "No alarms yet. Add one to get started.";
+  padding: 1rem;
+  color: var(--cds-text-secondary);
+  background: var(--cds-layer-01);
+}
+
+.alarms {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle);
+}
+
+.alarms input[type="time"] {
+  flex: 1 1 8rem;
+  min-width: 0;
+  max-width: 14rem;
+  background: var(--cds-background);
+}
+
+.alarms .controls {
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 0;
+}
+
+/* Un solo botón de alternancia según el estado */
+.alarms[paused] .pause,
+.alarms:not([paused]) .start {
+  display: none;
+}
+
+.alarms[paused] input {
+  color: var(--cds-text-secondary);
+}
+
+/* Alarma sonando: patrón de notificación en línea (aviso) */
+.alarms[ringing] {
+  background: var(--cds-notification-warning);
+  border-color: var(--cds-support-warning);
+  box-shadow: inset 3px 0 0 var(--cds-support-warning);
+}
+
+/* --------------------------------------------------------------------------
+   Pantallas pequeñas (< 672px, breakpoint "md" de Carbon)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 41.98rem) {
+  .shell-name {
+    padding: 0 0.5rem 0 1rem;
+  }
+
+  .shell-header nav a {
+    padding: 0 0.75rem;
+  }
+
+  /* Botones de acción a todo el ancho, apilados */
+  .controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .controls > .btn:not(.btn-icon) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .alarms .controls {
+    flex-direction: row;
+  }
+
+  /* Content switcher a todo el ancho */
+  .switcher {
+    display: flex;
+    width: 100%;
+  }
+
+  .switcher button {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .field {
+    flex-basis: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Movimiento reducido
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .switcher button,
+  .shell-header nav a {
+    transition: none;
+  }
+}

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#161616"
+    />
+    <title>Time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <header class="shell-header">
+      <a class="shell-name" href="#clock">Time</a>
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="#clock">Clock</a></li>
+          <li><a href="#alarm">Alarm</a></li>
+          <li><a href="#stopwatch">Stopwatch</a></li>
+          <li><a href="#timer">Timer</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="clock" aria-labelledby="clock-title">
+        <h1 id="clock-title" class="visually-hidden">Clock</h1>
+        <x-clock>
+          <time>00:00:00</time>
+        </x-clock>
+      </section>
+      <section id="alarm" aria-labelledby="alarm-title">
+        <h1 id="alarm-title" class="visually-hidden">Alarm</h1>
+        <x-alarm>
+          <template>
+            <section class="alarms">
+              <input
+                type="time"
+                min="00:00"
+                max="23:59"
+                step="1"
+                aria-label="Alarm time"
+              />
+              <section class="controls">
+                <button
+                  class="start btn btn-icon material-icons"
+                  aria-label="Turn alarm on"
+                  title="Turn alarm on"
+                >
+                  alarm_on
+                </button>
+                <button
+                  class="pause btn btn-icon material-icons"
+                  aria-label="Turn alarm off"
+                  title="Turn alarm off"
+                >
+                  alarm_off
+                </button>
+                <button
+                  class="delete btn btn-icon btn-danger material-icons"
+                  aria-label="Delete alarm"
+                  title="Delete alarm"
+                >
+                  delete
+                </button>
+              </section>
+            </section>
+          </template>
+          <section class="items"></section>
+          <section class="controls">
+            <button class="add btn btn-primary">
+              <span>Add alarm</span>
+              <span class="material-icons" aria-hidden="true">add_alarm</span>
+            </button>
+          </section>
+        </x-alarm>
+      </section>
+      <section id="stopwatch" aria-labelledby="stopwatch-title">
+        <h1 id="stopwatch-title" class="visually-hidden">Stopwatch</h1>
+        <x-stopwatch>
+          <time datetime="PT0S">00:00:00.00</time>
+          <section class="controls">
+            <button class="start btn btn-primary">
+              <span>Start</span>
+              <span class="material-icons" aria-hidden="true">play_arrow</span>
+            </button>
+            <button class="pause btn btn-secondary">
+              <span>Pause</span>
+              <span class="material-icons" aria-hidden="true">pause</span>
+            </button>
+            <button class="restart btn btn-tertiary">
+              <span>Restart</span>
+              <span class="material-icons" aria-hidden="true">restart_alt</span>
+            </button>
+          </section>
+        </x-stopwatch>
+      </section>
+      <section id="timer" aria-labelledby="timer-title">
+        <h1 id="timer-title" class="visually-hidden">Timer</h1>
+        <x-timer>
+          <time datetime="PT0S">00:00:00.00</time>
+          <section class="items">
+            <section class="timers">
+              <label class="field">
+                <span class="field-label">Interval 1</span>
+                <input
+                  type="time"
+                  min="00:00:00"
+                  max="23:59:59"
+                  value="00:03:00"
+                  step="1"
+                />
+              </label>
+              <label class="field">
+                <span class="field-label">Interval 2</span>
+                <input
+                  type="time"
+                  min="00:00:00"
+                  max="23:59:59"
+                  value="00:01:00"
+                  step="1"
+                />
+              </label>
+            </section>
+          </section>
+          <section class="switcher" role="group" aria-label="Repeat">
+            <button class="no-loop">No loop</button>
+            <button class="loop">Loop</button>
+          </section>
+          <section class="controls">
+            <button class="start btn btn-primary">
+              <span>Start</span>
+              <span class="material-icons" aria-hidden="true">play_arrow</span>
+            </button>
+            <button class="pause btn btn-secondary">
+              <span>Pause</span>
+              <span class="material-icons" aria-hidden="true">pause</span>
+            </button>
+            <button class="restart btn btn-tertiary">
+              <span>Restart</span>
+              <span class="material-icons" aria-hidden="true">restart_alt</span>
+            </button>
+          </section>
+        </x-timer>
+      </section>
+    </main>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
